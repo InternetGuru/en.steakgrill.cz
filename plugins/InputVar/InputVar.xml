@@ -1,5 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <InputVar>
+  <fn id="months" fn="replace">
+    <data name="[01]">January</data>
+    <data name="[02]">February</data>
+    <data name="[03]">March</data>
+    <data name="[04]">April</data>
+    <data name="[05]">May</data>
+    <data name="[06]">June</data>
+    <data name="[07]">July</data>
+    <data name="[08]">August</data>
+    <data name="[09]">September</data>
+    <data name="[10]">October</data>
+    <data name="[11]">November</data>
+    <data name="[12]">December</data>
+  </fn>
+  <fn id="yearformat" fn="strftime" format="%Y"/>
+  <fn id="tmpdateformat" fn="strftime" format="[%m] %e, %Y"/>
+  <fn id="dateformat" fn="sequence">
+    <call>tmpdateformat</call>
+    <call>months</call>
+  </fn>
+
+  <var id="nodebug">Operating mode</var>
+  <var id="debug">Debugging mode</var>
+  <var id="servercache">Delete server cache</var>
+  <var id="filecache">Update file cache</var>
+  <var id="reportbug"><a href="https://bitbucket.org/igwr/cms/issues?status=new&amp;status=open">Send feedback</a></var>
+  <!-- <var id="igcms"><a href="https://dokumenty.internetguru.cz/igcms">Specifikace IGCMS</a></var> -->
+  <var id="codemirror"><a href="https://dokumenty.internetguru.cz/zkratky">CodeMirror keyboard shortcuts</a></var>
+  <var id="version_link"><a href="/%s.php" var="cms-default_release@href" title="Pro nezávislé ladění zdrojových souborů (CSS/JS)">Separate branch</a></var>
+  <!--<var id="service_plain">E-Základna, www.e-zakladna.cz</var>-->
+  <!--<var id="service">Na službě: <a href="https://www.e-zakladna.cz/">E-Základna</a></var>-->
+  <var id="service_plain">Rostoucí weby, www.rostouciweby.cz</var>
+  <var id="service"><span class="seedling"><a href="https://growingwebsites.com">This website grows with us</a></span></var>
+  <var id="resp">Webmaster: <span var="cms-resp">n/a</span></var>
+  <var id="mtime">Latest changes: <span var="cms-mtime" fn="inputvar-dateformat">n/a</span></var>
+  <var id="admin">Admin: <span var="cms-admin_id">n/a</span></var>
+  <var id="cyear" fn="yearformat" var="cms-ctime"/>
+  <var id="year" fn="yearformat" var="cms-server">now</var><!-- cms-server to disable value for webdiff -->
+  <var id="today" fn="dateformat" var="cms-server">now</var><!-- cms-server to disable value for webdiff -->
+  <var id="adminmenu">
+    <ul class="adminmenu noprint">
+      <li><a href="?admin">Administration</a></li>
+      <li><a href="?log">Logs</a></li>
+      <li><a href="?changelog">Version history</a></li>
+      <li><a href="?import">Import</a></li>
+    </ul>
+  </var>
+  <var id="ielt7">
+    <div class="ielte7" style="background: yellow; margin: 0; border: 0.3em solid red;">
+      <dl>
+        <dt>You are using an outdated browser version!</dt>
+        <dd><a href="https://support.microsoft.com/cs-cz/help/17621/internet-explorer-downloads">Upgrade</a> to a higher version,</dd>
+        <dd>install <a href="https://www.google.com/chrome/">an alternative browser</a> or</dd>
+        <dd>contact your computer administrator.</dd>
+      </dl>
+    </div>
+  </var>
+
+
+
   <var id="atel"><a href="tel:+420777330050">+420 777 330 050</a></var>
   <var id="rezervace">Bookings are accepted only by telephone at <em var="inputvar-atel">n/a</em>.</var>
   <login id="lisec.tom@seznam.cz" password="$1$0rQyRpS4$eEKDehiobAwpOqQeq7TD7."/>
