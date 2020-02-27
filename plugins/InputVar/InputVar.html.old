@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<body xml:lang="en" ns="https://en.steakgrill.cz" class="inputvar">
+  <h author="InternetGuru" ctime="2015-06" id="inputvar">Administration of special food offers</h>
+  <desc kw="administrace, InputVar">When editing texts, respect <a href="https://cs.wikipedia.org/wiki/Wikipedie:Typografick%C3%A9_rady" title="Wikipedia: Typographic advice">general typographic rules</a>, and particularly the list of common shortcomings (below). Before saving, read the text again after at least a few minutes. After saving, go through the text once more; ideally, ask a colleague to review it as well. Leave the box blank to hide a dish.</desc>
+
+  <dl>
+    <dt>Terminology and spelling</dt>
+    <dd>Minimize the use of foreign terms and jargon! Before using a foreign term, make sure there is no usable translation. Czech speakers prefer intelligible (standard) Czech; unfamiliar terms tend to put them off.</dd>
+    <dd>Always explain foreign terms adequately, ideally by translating or rephrasing them (e.g., <samp>broth</samp> not <del><samp>bouillon</samp></del>). Alternatively, you can use an interactive glossary, e.g., <a var="definition-sous-vide">sous-vide</a>.</dd>
+    <dd>Be careful to use foreign terms correctly (e.g.,<samp>au jus</samp> not <del><samp>Jus</samp></del>).</dd>
+    <dd>You can check your spelling using the <a href="http://prirucka.ujc.cas.cz/" title="Internet language guide">Internet guide</a>, or the Internet in general.</dd>
+    <dt>Consistency</dt>
+    <dd>Start each piece of information (each row in the administration box) with a capital letter.</dd>
+    <dd>If you are not sure how to write a price or a price range, copy the text from the regular menu and edit it.</dd>
+    <dd>Each dish description ends with a period (to maintain consistency). As a result, it should be a sentence with a subject and a verb (not as if the title continues).</dd>
+    <dt>Typography</dt>
+    <dd>English headings should have capital letters at the start of each word (e.g., <samp>Scotch Broth</samp>, <samp>Pepper Steak</samp>). Czech headings only have one at the start (e.g., <samp>Hovězí vývar</samp>, <samp>Tatarský steak</samp>).</dd>
+    <dd>Distinguish between the en dash (<samp>–</samp>) and the hyphen (<samp>-</samp>), and the em dash (<samp>—</samp>). If the en dash divides two words only, there are no spaces around it (<samp>May 1–2</samp>). In any other case, use spaces around the dash (<samp>April 30 – May 1</samp>).</dd>
+    <dd>Distinguish between the <samp>„Czech“</samp> and <samp>“English”</samp>quotation marks and the inch sign (<samp>"</samp>).</dd>
+    <dd>The apostrophe and the acute accent are different signs, e.g., <samp>Fisherman's Chowder (apostrophe)</samp> not <del><samp>Fisherman´s Chowder</samp></del> or <del><samp>Fisherman`s Chowder</samp></del></dd>
+    <dd>A space goes between a number and a unit if they are separate words (e.g., <samp>one hundred grams (as a noun phrase) = 100 g</samp>, whereas <samp>one-hundred-gram (as an adjective phrase) = 100g</samp>). The same applies to percent and other signs.</dd>
+    <dd>The letter case matters, particularly also with units (e.g., <samp>g = gram</samp>, <samp>G = giga-</samp>).</dd>
+    <dd>Punctuation marks (such as the period, comma, etc.) are followed by a space, with exceptions such as the closing parentheses in this sentence.</dd>
+    <dd>A <a var="definition-nbsp">non-breaking space</a> should go between certain words. These are all the <a var="definition-zalomeni-radku">words inappropriate to end a line</a> (such as one-letter Czech prepositions) regardless of their place in the text, as they may occur at the end of the line when being printed or in another device.</dd>
+  </dl>
+
+  <form class="editable fillable validable validateform-10 eventable-noevent" id="inputvarform" action="/" method="post" var="action@action">
+    <fieldset class="hideable hideable-nohide"><legend var="group">n/a</legend>
+      <dl var="inputs">
+        <dt>n/a</dt>
+        <dd>n/a</dd>
+      </dl>
+    </fieldset>
+    <fieldset><legend>Control panel</legend>
+      <dl>
+        <dt var="nopasswd"><label for="inputvar-user">User name</label></dt>
+        <dd var="nopasswd"><input name="username" type="text" id="inputvar-user" value="admin"/></dd>
+        <dt var="nopasswd"><label for="inputvar-passwd">Password</label></dt>
+        <dd var="nopasswd"><input name="passwd" required="required" type="password" id="inputvar-passwd"/></dd>
+        <dt></dt>
+        <dd><input type="hidden" var="userfilehash@value" name="userfilehash"/><input type="submit" class="button" value="Save"/></dd>
+      </dl>
+    </fieldset>
+  </form>
+</body>

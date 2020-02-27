@@ -83,8 +83,8 @@
     var slideable = new Slideable()
     slideable.init({
       childrenSelector: ".references .citation",
-      arrowRightTitle: "next",
-      arrowLeftTitle: "previous",
+      arrowRightTitle: "další reference",
+      arrowLeftTitle: "předchozí reference",
       styles: 'body .js-slideable-child { display: block; animation: fadein linear 0.5s 1 normal forwards !important; -webkit-animation: fadein linear 0.5s 1 normal forwards !important; } body .js-slideable-hidden { display: none; } @keyframes fadein { 0% { opacity: 0; visibility: hidden; } 10% { opacity: 0; visibility: visible; } 100% { opacity: 1; height: auto; } @-webkit-keyframes fadein { 0% { opacity: 0; visibility: hidden; } 10% { opacity: 0; visibility: visible; } 100% { opacity: 1; height: auto; }'
     })
   })

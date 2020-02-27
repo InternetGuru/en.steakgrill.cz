@@ -5,7 +5,7 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  <xsl:template match="//h1">
+  <xsl:template match="//h1 | //h2">
     <xsl:element name="div">
       <xsl:attribute name="class">
         <xsl:call-template name="copyid"/>
@@ -21,9 +21,11 @@
         <xsl:copy-of select="following-sibling::*[1][name() = 'p'][contains(@class, 'description')]"/>
       </xsl:element>
     </xsl:element>
-    <xsl:element name="div">
-      <xsl:call-template name="topdiv"/>
-    </xsl:element>
+    <xsl:if test="name()='h1'">
+      <xsl:element name="div">
+        <xsl:call-template name="topdiv"/>
+      </xsl:element>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="topdiv">
@@ -40,7 +42,8 @@
 
   <!-- ignore elements between h1 and div.section -->
   <xsl:template match="//*[preceding-sibling::h1 and (following-sibling::div[contains(@class, 'section')] or not(//div[contains(@class, 'section')]))]"/>
-  <xsl:template match="p[contains(@class, 'description')][preceding-sibling::*[1][name() = 'h1']]"/>
+
+  <xsl:template match="p[contains(@class, 'description')][preceding-sibling::*[1][name() = 'h1' or name() = 'h2']]"/>
   
   <xsl:template name="copyid">
     <xsl:choose>

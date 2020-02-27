@@ -81,6 +81,21 @@ h2.break {
   display: table;
   clear: both;
 }
+.information svg,
+.meal svg {
+  font-size: 1.25em;
+  margin-left: 0.25em;
+  position: relative;
+  top: 0.15em;
+}
+.information svg {
+  margin-left: 0;
+  margin-right: 0.25em;
+}
+.hamburgers_and_pasta .meal svg,
+.grill_griddle .meal svg {
+  color: white;
+}
 /*
 @media all and (min-width: 30em) {
   body #content .meal {

@@ -1,0 +1,44 @@
+oiti*t, *:before, *:after {color: black !important;background: transparent !important;text-shadow: none !important;border-color: #5e5e5e !important;box-shadow: none !important;}
+h1, h2, h3 {font-weight: normal; page-break-after: avoid; page-break-inside: avoid;}
+body {font-size:10pt;font-family: Charter, Georgia, sans;}
+@page {size: auto; margin: 21mm 20mm;}
+.print {display: initial;}
+li.print {display: list-item;}
+.noprint, .hidden {display: none !important;}
+.hideable dd {margin-left:0;}
+::placeholder {color: transparent;}
+ol.contentlink-bc {list-style: none; padding-left: 0;}
+ol.contentlink-bc li {display: inline-block;}
+.part.hot_drinks .imgwrap {
+  max-width: 14em;
+  padding-bottom: 0!important;
+  height: 11em;
+  margin: 0 auto
+}
+.js-slideable-left,
+.js-slideable-right {
+  display: none !important;
+}
+.logo {
+  max-width: 18em !important;
+  width: 100% !important;
+  position: relative;
+  top: -1em;
+}
+.references h3 {
+  display: none;
+}
+.logo .imgwrap,
+.citation .imgwrap {
+  background: none;
+}
+.citation dt {
+  max-width: 9em;
+  margin: 2em;
+}
+.citation dd:last-child {
+  margin-top: 1em;
+}
+.contact dt {
+  font-size: 1.25em;
+}

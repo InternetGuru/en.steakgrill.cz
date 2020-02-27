@@ -41,6 +41,12 @@
   if (closed) {
     return;
   }
-  document.body.innerHTML += '<div style="position: fixed;background: black;background: rgba(0, 0, 0, 0.8);padding: 0 1rem 2rem;font-size: 1.2rem;color: white;width: calc(100% - 2rem);bottom: 0;left: 0;line-height: 1.5;text-align: center;max-height: calc(100% - 2rem);overflow: auto;"><p style="font-size: 2rem;">Upozornění</p><p>' + alertMessage + '<a onclick="closePopup(this)" style="cursor:pointer; color: white;font-weight: normal;background: #ffffff1f;padding: 0.1em 0.4em;text-decoration: none;margin-left: 1em;border-radius: 0.5em;border: thin solid white;">Skrýt</a><a onclick="closePopup(this)" style="cursor:pointer; position: absolute;top: 0;right: 1rem;color: white;border: none;font-size: 2em;">×</a></p><p></p></div>';
+  var heading = "Upozornění"
+  var close = "Skrýt"
+  if (document.documentElement.lang == "en") {
+    heading = "Notice"
+    close = "Hide"
+  }
+  document.body.innerHTML += '<div style="position: fixed;background: black;background: rgba(0, 0, 0, 0.8);padding: 0 1rem 2rem;font-size: 1.2rem;color: white;width: calc(100% - 2rem);bottom: 0;left: 0;line-height: 1.5;text-align: center;max-height: calc(100% - 2rem);overflow: auto;"><p style="font-size: 2rem;">' + heading + '</p><p>' + alertMessage + '<a onclick="closePopup(this)" style="cursor:pointer; color: white;font-weight: normal;background: #ffffff1f;padding: 0.1em 0.4em;text-decoration: none;margin-left: 1em;border-radius: 0.5em;border: thin solid white;">' + close + '</a><a onclick="closePopup(this)" style="cursor:pointer; position: absolute;top: 0;right: 1rem;color: white;border: none;font-size: 2em;">×</a></p><p></p></div>';
 
 })()

@@ -39,6 +39,14 @@
       <xsl:apply-templates select="node()|@*"/>
     </xsl:copy>
   </xsl:template>
+  <!-- beer -->
+  <xsl:template match="div[contains(@class, 'beer')]/div">
+    <xsl:copy>
+      <xsl:attribute name="class">content-card</xsl:attribute>
+      <xsl:attribute name="data-visibility">/nabidka</xsl:attribute>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:copy>
+  </xsl:template>
   <!-- all parts on beverages and wine_list -->
   <xsl:template match="div[contains(@class, 'part')]/div[ancestor::body[@data-link='/beverages' or @data-link='/wine_list'] or ancestor::body[@data-link='/napojovy_listek' or @data-link='/vinny_listek']]">
     <xsl:copy>
@@ -48,7 +56,7 @@
   </xsl:template>
   
   <!-- GROUP -->
-  <!-- daily_offer, weekend_events -->
+  <!-- daily_offer, weekend_events, pivo -->
   <xsl:template match="div[contains(@class, 'daily_offer')][ancestor::body[@data-link='/menu'] or ancestor::body[@data-link='/nabidka']]">
     <xsl:text disable-output-escaping="yes">&lt;div class="part content-group daily_any_weekend"&gt;&lt;div&gt;</xsl:text>
     <xsl:copy>

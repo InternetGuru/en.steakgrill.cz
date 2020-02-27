@@ -47,7 +47,6 @@
   <xsl:param name="inputvar-feedback-cs" select="''"/>
   <xsl:param name="inputvar-feedback-en" select="''"/>
 
-
   <xsl:variable name="copy">
     <xsl:choose>
       <xsl:when test="$inputvar-cyear = $inputvar-year">©&#160;<xsl:value-of disable-output-escaping="yes" select="$inputvar-cyear"/></xsl:when>

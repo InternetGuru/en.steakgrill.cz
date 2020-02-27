@@ -11,13 +11,14 @@ div.list.multiple div > * {
   margin: 0.5em 0;
   padding: 1em;
 }
-/*********************************
+
 @media (min-width: 50em) {
-  div.list.multiple div > *:not(.meal) {
+  div.list.multiple div > *.card-lm {
     flex: 0 1 50%;
     max-width: 50%;
   }
 }
+/*********************************
 @media (min-width: 62em) {
   div.list.multiple div > *:not(.meal) {
     flex: 0 1 33.33%;

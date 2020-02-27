@@ -13,6 +13,9 @@
         <xsl:when test="parent::dl[@data-type='Soup']">
           <span class="fas fa-soup">i</span>
         </xsl:when>
+        <xsl:when test="parent::dl[@data-type='Beer']">
+          <span class="fas fa-beer">i</span>
+        </xsl:when>
       </xsl:choose>
       <xsl:apply-templates/>
     </xsl:copy>
