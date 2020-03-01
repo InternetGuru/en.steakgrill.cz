@@ -1133,6 +1133,7 @@ body.inputvar input[name="username"] {
   bottom: 4em;
   color: #616161 !important;
   color: rgba(97, 97, 97, 0.39) !important;
+  height: 5em;
 }
 .js-slideable-left:hover,
 .js-slideable-right:hover,
