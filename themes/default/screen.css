@@ -272,13 +272,13 @@ svg.fa-facebook {
   color: #b6150d;
   flex-wrap: nowrap;
   padding: 0.9em 1.5em;
-  padding-left: 1.3em;
+  text-align: left;
 }
 #content .button-img-inline svg {
-  flex: 0 1 auto;
-  font-size: 1rem;
   margin: 0;
-  flex: 0 1 25%;
+  flex: 0 0 1em;
+  font-size: 2em;
+  margin-right: 0.5em;
 }
 #content .button:hover,
 #content .button:active,
@@ -299,7 +299,6 @@ svg.fa-facebook {
   #content .button-img-inline svg {
     flex: 0 1 auto;
     margin-right: 0.5em;
-    font-size: 2em;
   }
   #content .contentbalancer-simple .button {
     max-width: none;
