@@ -275,9 +275,12 @@ svg.fa-facebook {
   padding: 0.9em 1.5em;
   text-align: left;
 }
+#content > .hdesc .button {
+  font-size: 1.1em;
+}
 #content .button-img-inline svg {
   margin: 0;
-  flex: 0 0 1em;
+  flex: 0 0 auto;
   font-size: 2em;
   margin-right: 0.5em;
 }
@@ -298,7 +301,7 @@ svg.fa-facebook {
     flex: 0 1 auto;
   }
   #content .button-img-inline svg {
-    flex: 0 1 auto;
+    flex: 0 0 auto;
     margin-right: 0.5em;
   }
   #content .contentbalancer-simple .button {
