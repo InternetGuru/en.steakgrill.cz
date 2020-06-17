@@ -1,4 +1,130 @@
 @charset "UTF-8";
+/************************************/
+#header > div {
+  max-width: 60rem;
+  margin: 0 auto;
+  /* padding: 1rem; */
+  position: relative;
+}
+#header > div ol.breadcrumb {
+  padding: 0.5em 1.5em 0.5em 1em;
+}
+#header > div .globalmenu {
+  margin: 0.25em 0 0;
+  padding: 0;
+  list-style: none;
+}
+#header > div .globalmenu li {
+  margin: 0;
+}
+#header > div .globalmenu li:first-child {
+  margin-left: 0;
+}
+#header div.hideable-button * {
+  box-sizing: content-box;
+}
+#header div.hideable-button {
+  position: absolute;
+  top: 0;
+  right: 1em;
+}
+#header div.hideable-button a {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0.5rem;
+  visibility: hidden;
+  width: 1em;
+}
+#header div.hideable-button a:before {
+  content:'\2630';
+  visibility: visible;
+  font-size: 2em;
+}
+#header > div .globalmenu a {
+  text-transform: uppercase;
+  border: none;
+  display: block;
+  padding: 1em;
+  text-align: center;
+  letter-spacing: 0.02em;
+  background: none;
+}
+#header div.hideable-button span:last-child {
+  display: none;
+}
+#header > div .globalmenu a.current {
+  font-weight: 500;
+}
+#header > div .globalmenu a.current:before {
+  content: "●";
+  padding-right: 0.4em;
+  vertical-align: 0.1em;
+}
+#header .globalmenu-top {
+  position: absolute;
+  right: 0;
+  padding-right: 0;
+}
+#footer > ul.globalmenu {
+  text-transform: uppercase;
+}
+#footer > ul.globalmenu > li li {
+  margin: 0.2em 0;
+}
+#footer > ul.globalmenu > li a {
+  border: none;
+}
+#footer > ul.globalmenu > li a.current {
+  font-weight: 600;
+}
+@media (min-width: 28em) {
+  #header > div .globalmenu li {
+    display: inline-block;
+  }
+}
+@media (min-width: 42em) {
+  #header > div {
+    display: flex;
+  }
+  #header > div ol.breadcrumb {
+    flex-grow: 1;
+  }
+  #header > div .globalmenu {
+    margin-top: 0;
+  }
+  #header a.hideable-switch {
+    display: none !important;
+  }
+  #header div.globalmenu-top {
+    display: block !important;
+    position: static;
+    padding: 0;
+  }
+  #header > div .globalmenu a {
+    padding: 1em;
+  }
+}
+#footer {
+  padding-top: 3em;
+  padding-bottom: 0.5em;
+}
+#footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+}
+#footer ul ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#footer ul li {
+  margin-left: 0.7em;
+  margin-right: 0.7em;
+  text-align: center;
+}
 /*********************************/
 body {
   font-family: serif;
@@ -21,7 +147,7 @@ strong {
   color: #b6150d;
   border-bottom: 0 none;
 }
-.contentlink-bc a {
+.breadcrumb a {
   border: none;
   /* border-color: #84797d; */
 }
@@ -30,7 +156,7 @@ h1 {
   font-size: 3em;
   font-weight: 400;
   text-align: center;
-  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 @media all and (min-width: 25em) {
   h1 {
@@ -67,17 +193,17 @@ h1 + p.description:after {
 .globalmenu li:first-child {
   display: none !important;
 }
-ol.contentlink-bc > li+li:before {
+ol.breadcrumb > li+li:before {
   vertical-align: 0;
 }
 /*********************************/
 .definition-hidden {
   display: none !important;
 }
-.list.multiple {
+.list-wrapper--multiple {
   clear: both;
 }
-.references .list.multiple {
+.references .list-wrapper--multiple {
   padding: 0;
   max-width: 100%;
 }
@@ -86,7 +212,7 @@ ol.contentlink-bc > li+li:before {
   position: absolute;
   width: 100%;
   color: white;
-  background: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.6) !important;
   font-size: 1em;
   padding: 0.2em 0;
 }
@@ -94,13 +220,14 @@ ol.contentlink-bc > li+li:before {
   color: white;
   /* font-weight: 600; */
 }
-#header .contentlink-bc li:first-child {
+#header .breadcrumb li:first-child {
   text-transform: uppercase;
 }
+#header .breadcrumb a[href] {
+  border-bottom: thin solid rgba(255, 255, 255, 0.5);
+}
 #header > div .globalmenu {
-  margin-top: 0.2rem;
   background: rgba(0, 0, 0, 0.6);
-  border-top: thin solid rgba(255, 255, 255, 0.14);
 }
 @media all and (min-width: 42em) {
   #header > div .globalmenu {
@@ -173,6 +300,9 @@ ol.contentlink-bc > li+li:before {
 #content .logo .imgwrap {
   background: none;
 }
+#content .logo .imgwrap img {
+  margin: 0;
+}
 /*********************************/
 #footer {
   background: #000;
@@ -225,14 +355,16 @@ ol.contentlink-bc > li+li:before {
   background: #2e7d32;
   color: white;
 }
-#content a.button:not([href]) {
+#content a.button:not([href]),
+#content a.button[href = "#"] {
   box-shadow: none;  
 }
-#content .button:not([href]):hover {
+#content .button:not([href]):hover,
+#content .button[href = "#"]:hover {
   box-shadow: none;
 }
 #content .button-list,
-#content .contentbalancer-simple ul {
+#content .contentbalancer--simple {
   list-style: none;
   margin: 5em 0;
   display: flex;
@@ -243,13 +375,13 @@ ol.contentlink-bc > li+li:before {
 .section > .button-list {
   
 }
-.contentbalancer-simple li,
+.contentbalancer--simple li,
 .button-list li {
   margin: 0.5em;
   flex: 0 1 100%;
   text-align: center;
 }
-.contentbalancer-simple li a,
+.contentbalancer--simple li a,
 .button-list li a {
   width: 100%;
 }
@@ -291,12 +423,12 @@ svg.fa-facebook {
   box-shadow: 0 0.4em 0.5em 0 rgba(0,0,0,0.14), 0 0.1em 1em 0 rgba(0,0,0,0.12), 0 0.2em 0.4em -0.1em rgba(0,0,0,0.3);
 }
 @media all and (min-width: 27em) {
-  #content .contentbalancer-simple {
+  #content .contentbalancer--simple {
     max-width: 50em;
     margin-left: auto;
     margin-right: auto;
   }
-  .contentbalancer-simple li,
+  .contentbalancer--simple li,
   .button-list li {
     flex: 0 1 auto;
   }
@@ -304,7 +436,7 @@ svg.fa-facebook {
     flex: 0 0 auto;
     margin-right: 0.5em;
   }
-  #content .contentbalancer-simple .button {
+  #content .contentbalancer--simple .button {
     max-width: none;
   }
 }
@@ -320,11 +452,11 @@ svg.fa-facebook {
 }
 @media all and (min-width: 35em) {
   #content .meal dt > svg {
-    font-size: 0.8em;
+    font-size: 1em;
     display: inline-block;
     position: absolute;
-    left: -1.6em;
-    top: 0.35em;
+    left: -1.7em;
+    top: 0.25em;
   }
 }
 /*********************************/
@@ -486,14 +618,14 @@ svg.fa-facebook {
   flex-wrap: wrap;
   justify-content: center;
 }
-.menu .contentbalancer-simple {
+.menu .contentbalancer--simple {
   display: none;
 }
 #content .menu .button-list {
   margin-top: 0;
 }
 .daily_offer,
-.weekend_events {
+.special {
   padding: 0;
   box-sizing: border-box;
   display: flex;
@@ -501,7 +633,7 @@ svg.fa-facebook {
 }
 @media (min-width: 75em) {
   .daily_offer,
-  .weekend_events,
+  .special,
   .menu-nested,
   .references {
     box-sizing: border-box;
@@ -510,7 +642,22 @@ svg.fa-facebook {
   }
 }
 .beer dt {
-  font-size: 1.5em;
+  text-align: center;
+}
+.beer dt + dd {
+  font-weight: 700;
+  font-size: 1.2em;
+  position: relative;
+  margin-bottom: 0.25em;
+  font-style: normal;
+  position: relative;
+}
+.beer dt + dd svg {
+  font-size: 0.8em;
+  display: inline-block;
+  position: absolute;
+  left: -1.7em;
+  top: 0.35em;
 }
 .beer img {
   max-width: 11em;
@@ -611,12 +758,12 @@ svg.fa-facebook {
   }
   #content .part.kids_menu > div,
   .part.hamburgers_and_pasta > div {
-    max-width: 43rem;
-    margin-right: 5vw;
+    max-width: 43rem !important;
+    margin-right: 5vw !important;
   }
   #content .part.grill_griddle >  div {
-    max-width: 43rem;
-    margin-left: 5vw;
+    max-width: 43rem !important;
+    margin-left: 5vw !important;
   }
 }
 /*********************************/
@@ -636,6 +783,7 @@ svg.fa-facebook {
 .part.information ul {
   list-style: none;
   text-align: center;
+  max-width: 40em;
 }
 .part.information ul li {
   margin: 1em 0;
@@ -698,7 +846,7 @@ svg.fa-facebook {
     width: 38em;
     max-width: 48vw;
   }
-  .content-img div.list.multiple {
+  .content-img div.list-wrapper--multiple {
     margin: 4em 0 6em 0;
   }
   #content .jaroslav_honzajk .button-list {
@@ -706,6 +854,9 @@ svg.fa-facebook {
   }
 }
 /*********************************/
+.part.regular_menu .list-wrapper--single,
+.part.beverages .list-wrapper--single,
+.part.wine_list .list-wrapper--single,
 #reference,
 #references {
   display: none;
@@ -797,16 +948,42 @@ svg.fa-facebook {
 #content .hdesc.wine_list + ol.contenttoc.button-list {
   max-width: 50em
 }
+.hdesc.inputvar {
+  padding-bottom: 5em;
+}
+body.inputvar #content > div > .list-wrapper--multiple {
+  margin-top: 4em;
+}
 @media all and (min-width: 35em) {
   #content .contenttoc .button {
     max-width: none;
   }
   .hdesc.beverages,
-  .hdesc.wine_list,
   .hdesc.regular_menu {
     padding-bottom: 18em;
   }
-  #content ol.contenttoc.button-list {
+  .hdesc.wine_list {
+    padding-bottom: 15em;
+    margin-bottom: 4em;
+  }
+  .hdesc.manual {
+    padding-bottom: 15em;
+    margin-bottom: 5em;
+  }
+  body:not(.inputvar) #content ol.contenttoc.button-list {
+    margin-bottom: 6em;
+    margin-top: -16em;
+    max-width: 64em;
+  }
+}
+@media all and (min-width: 45em) {
+  .hdesc.inputvar {
+    padding-bottom: 18em;
+  }
+  body.inputvar #content > div > .list-wrapper--multiple {
+    margin-top: 10em;
+  }
+  body.inputvar #content ol.contenttoc.button-list {
     margin-bottom: 6em;
     margin-top: -16em;
     max-width: 64em;
@@ -814,14 +991,22 @@ svg.fa-facebook {
 }
 @media all and (min-width: 60em) {
   .hdesc.beverages,
-  .hdesc.wine_list,
-  .hdesc.regular_menu {
+  .hdesc.regular_menu,
+  .hdesc.inputvar {
+    padding-bottom: 17em;
+  }
+  .hdesc.wine_list {
     padding-bottom: 14em;
+  }
+  body.inputvar #content > div > .list-wrapper--multiple {
+    margin-top: 12em;
   }
   #content ol.contenttoc.button-list {
     margin-top: -12em;
     max-width: 64em;
     margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 /*********************************/
@@ -979,31 +1164,32 @@ dl.klima dt:first-child .imgwrap {
   max-width: 52em !important;
 }
 @media (min-width: 35em) {
-  .part.steaks .multiple {
+  .part.steaks .list-wrapper--multiple {
     padding: 0;
   }
-  .part.steaks .multiple > div {
+  .part.steaks .list-wrapper--multiple > div {
     display: flex;
     justify-content: space-evenly;
   }
-  .part.steaks .multiple > div > * {
+  .part.steaks .list-wrapper--multiple > div > * {
     flex: 0 1 23%;
     max-width: 23%;
     text-align: center;
   }
 }
-.part.steaks .multiple dd {
+.part.steaks .list-wrapper--multiple dd {
   margin-left: 0;
   font-style: italic;
+  margin-top: 0.5em;
 }
-.part.steaks .multiple dl {
+.part.steaks .list-wrapper--multiple dl {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   max-width: 12em;
   margin: 0 auto;
 }
-.part.steaks .multiple .imgwrap {
+.part.steaks .list-wrapper--multiple .imgwrap {
   background: none;
 }
 .part.steaks .content-card p.description {
@@ -1028,19 +1214,19 @@ dl.klima dt:first-child .imgwrap {
 #video-archives {
   margin-top: 2em;
 }
-.part.video-archives .list.multiple li {
+.part.video-archives .list-wrapper--multiple li {
   list-style: none;
   margin-left: 0;
 }
-.part.video-archives .list.multiple li + li {
+.part.video-archives .list-wrapper--multiple li + li {
   margin-top: 0.5em;
 }
-.part.video-archives .list.multiple svg {
+.part.video-archives .list-wrapper--multiple svg {
   vertical-align: -0.35em;
   margin-right: 0.25em;
 }
 @media (min-width: 50em) {
-  .part.video-archives .list.multiple ul {
+  .part.video-archives .list-wrapper--multiple ul {
     flex: 0 1 50%;
     max-width: 50%;
   }
@@ -1052,6 +1238,7 @@ dl.klima dt:first-child .imgwrap {
   height: 9em;
   vertical-align: bottom;
   text-transform: uppercase;
+  list-style: none;
 }
 #footer ul.globalmenu + ul {
   justify-content: left;
@@ -1081,6 +1268,11 @@ dl.klima dt:first-child .imgwrap {
 }
 #footer ul:last-child li:nth-child(5) > span {
   margin-left: 0.25em;
+}
+#footer ul:last-child svg {
+  margin-right: 0.25em;
+  position: relative;
+  top: -0.1em;
 }
 #footer ul:last-child .seedling {
   display: flex;
@@ -1146,12 +1338,28 @@ body.inputvar textarea {
 }
 body.inputvar input[name="username"] {
   max-width: 13.5em !important;
-} 
+}
+body.inputvar #content > div > .list-wrapper--multiple dl {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+body.inputvar #content > div > .list-wrapper--multiple dl dt {
+  margin-top: 0;
+}
+#inputvarform {
+  margin-top: 0;
+}
+body.inputvar #inputvarform input[disabled] {
+  background: #E0E0E0;
+}
+body.inputvar #inputvarform input[name="save"] {
+  margin-right: 1em;
+}
 /*********************************/
 .citation {
   display: none;
 }
-.references .list.multiple > div {
+.references .list-wrapper--multiple > div {
   position: relative;
 }
 .references {
@@ -1189,7 +1397,7 @@ body.inputvar input[name="username"] {
   position: absolute;
   bottom: 0;
   right: 0;
-  border-bottom: 6em solid #00000021;
+  border-bottom: 6em solid rgba(0,0,0,0.12941);
   border-left: 6em solid transparent;
   z-index: 1;
 }
@@ -1209,21 +1417,23 @@ body.inputvar input[name="username"] {
   display: none;
 }
 /*********************************/
-.inputvar #content .js-completable-input {
+.inputvar #content .js-completable__input {
   border: none;
   border-radius: 0;
   background: #FAFAFA;
 }
-.inputvar #content .js-completable-wrapper {
+.inputvar #content .js-completable__wrapper {
   background: #ECEFF1;
   display: flex;
   align-items: center;
   position: relative;
+  max-width: unset;
 }
-.inputvar #content .js-completable-wrapper > svg {
-  padding: 0 0.5em
+.inputvar #content .js-completable__wrapper > svg {
+  padding: 0 0.5em;
+  box-sizing: content-box;
 }
-.inputvar #content .js-completable-wrapper ul.navigList {
+.inputvar #content .js-completable__wrapper ul.navigList {
   top: 3.5em;
   left: 2em;
 }
@@ -1262,5 +1472,43 @@ body.inputvar input[name="username"] {
 }
 .hideable-nohide a.hideable-switch:before {
   font-family: "Lucida Console", Monaco, monospace;
+}
+/*********************************/
+a#scrolltop {
+  box-sizing: content-box;
+}
+body[data-link="/"] .contentbalancer--simple {
+  display: none !important;
+}
+body #footer > * {
+  max-width: 45rem !important;
+}
+#poledni_nabidka {
+  max-width: 11em;
+}
+.meal .tag {
+  background: #EEEEEE;
+  color: #111;
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  white-space: nowrap;
+}
+#content .meal .tag svg {
+  color: #b6150d !important;
+  /* font-size: 0.95em; */
+  vertical-align: 0;
+  position: relative;
+  top: 0.15em;
+}
+.part.hamburgers_and_pasta .meal .tag,
+.part.grill_griddle .meal .tag,
+.part.kids_menu .meal .tag {
+  background: #424242;
+  color: white;
+}
+#content .part.hamburgers_and_pasta .meal .tag svg,
+#content .part.grill_griddle .meal .tag svg,
+#content .part.kids_menu .meal .tag svg {
+  color: white !important;
 }
 /*********************************/
