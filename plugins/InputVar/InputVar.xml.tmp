@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<InputVar>
+  <var id="atel"><a href="tel:+420777330050">777 330 050</a></var>
+  <var id="rezervace">Rezervace jsou možné pouze telefonicky na čísle <em var="inputvar-atel">n/a</em>.</var>
+  <login id="lisec.tom@seznam.cz" password="$1$0rQyRpS4$eEKDehiobAwpOqQeq7TD7."/>
+  <login id="vithavlu@gmail.com" password="$1$G5XLYFDc$swkl3PE//v0AkO5AcAnMk0"/>
+  <login id="honzajk@steakgrill.cz" password="$1$HuXemG.Q$Zv/0VyhIVGv2k4QBaaAIy1"/>
+  <login id="pavlina.militka@gmail.com" password="$1$elVCHwKt$7pOmdpe3OPFxlpJx9P1f61"/>
+  <login id="lukasbula41@gmail.com" password="$1$mHoISSmD$e/P9gVukY99OkTqSZNGdE."/>
+  <login id="denisa.volakova96@seznam.cz" password="$1$ItADE0M0$to6NHAks3bi7aC.vYd9kK/"/>
+  <login id="madmann@seznam.cz" password="$1$yu.0IfRA$DFdgd6Jn1P/1NeGsTIQtD1"/>
+  <login id="internetguru" password="$1$fs2OfhF6$sNbEhiE/55qwQSwKkf.Xy/"/>
+  <fn id="formatjidlo1" fn="pregreplace" pattern="\s*(.+)\s*\n\s*(.+)([\s\S]*)" replacement="&lt;dt&gt;$1&lt;/dt&gt;&lt;dd&gt;$2&lt;/dd&gt;&lt;dt class=&quot;price&quot;&gt;Cena:&lt;/dt&gt;&lt;dd class=&quot;price&quot;&gt;$3&lt;/dd&gt;"/>
+  <fn id="formatjidlo1pivo" fn="pregreplace" pattern="\s*(.+)\s*\n\s*(.+)\s*\n\s*(.+)([\s\S]*)" replacement="&lt;dt&gt;&lt;img src=&quot;$3&quot; alt=&quot;Logo piva&quot; /&gt;&lt;/dt&gt;&lt;dd&gt;$1&lt;/dd&gt;&lt;dd&gt;$2&lt;/dd&gt;&lt;dt class=&quot;price&quot;&gt;Cena:&lt;/dt&gt;&lt;dd class=&quot;price&quot;&gt;$4&lt;/dd&gt;"/>
+  <fn id="formatjidlo2" fn="pregreplace" pattern="(.+) ([\d]+ Kč)" replacement="&lt;span&gt;&lt;span&gt;$1&lt;/span&gt;&lt;span&gt;$2&lt;/span&gt;&lt;/span&gt;"/>
+  <fn id="formatjidlonbsp" fn="pregreplace" pattern="(\d) (g|Kč)" replacement="$1 $2"/>
+  <fn id="formatheadingnbsp" fn="pregreplace" pattern="(\d)\. " replacement="$1. "/>
+  <fn id="formatjidlo3" fn="pregreplace" pattern="(se)(rv)(er)" replacement="&lt;dt&gt;$1&lt;/dt&gt;&lt;dd&gt;$2&lt;/dd&gt;&lt;dt class=&quot;price&quot;&gt;Cena:&lt;/dt&gt;&lt;dd class=&quot;price&quot;&gt;$3&lt;/dd&gt;"/>
+  <fn id="formatjidlo" fn="sequence">
+    <call>formatjidlo1</call>
+    <call>formatjidlo2</call>
+    <call>formatjidlonbsp</call>
+    <call>formatjidlo3</call>
+  </fn>
+  <fn id="formatpivo" fn="sequence">
+    <call>formatjidlo1pivo</call>
+    <call>formatjidlo2</call>
+    <call>formatjidlonbsp</call>
+    <call>formatjidlo3</call>
+  </fn>
+  <set type="text" for="nabidka" pattern="Denní specialita, \d?\d. (ledna|února|března|dubna|května|června|července|srpna|září|října|listopadu|prosince) 20\d\d" placeholder="Denní specialita, 16. dubna 2018">Denní specialita, datum</set>
+  <var var="cms-server" fn="formatheadingnbsp" id="nabidka" required="required">Denní specialita, 17. května 2020</var>
+  <var var="cms-server" id="nabidka-popis">Každý všední den vaříme obědové menu z čerstvých surovin.</var>
+  <set type="textarea" for="nabidka-polevka\d+" pattern="[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ].+\n\s*[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ].*\.(\n.*\d+ Kč){2}" placeholder="Scotch Broth&#10;Skotská polévka ze skopového masa se zeleninou, kroupami a tymiánem.&#10;malá 43 Kč&#10;velká 49 Kč">Polévky</set>
+  <var var="cms-server" fn="formatjidlo" id="nabidka-polevka1" required="required">Dršťková polévka&#13;
+Taková, jaká má být, plná hovězích drštěk.&#13;
+malá 49 Kč&#13;
+velká 55 Kč</var>
+  <var var="cms-server" fn="formatjidlo" id="nabidka-polevka2"/>
+  <set type="textarea" for="nabidka-jidlo\d+" pattern="[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ][^\/0-9]+(, \d{1,4} g)?\n\s*[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ].*\.(\n(.+ )?\d{1,3} Kč){1,2}" placeholder="Telecí kýta na paprice&#10;Telecí kýta s delikátní smetanovou omáčkou s paprikou a s našimi houskovými knedlíky.&#10;179 Kč (volitelně)">Hlavní jídla</set>
+  <var var="cms-server" fn="formatjidlo" id="nabidka-jidlo1" required="required">Hovězí guláš&#13;
+Na kostky krájený, dušený hovězí krk, naše houskové knedlíky, cibulka.&#13;
+189 Kč</var>
+  <var var="cms-server" fn="formatjidlo" id="nabidka-jidlo2"/>
+  <set type="text" for="vikendova-akce" pattern="Víkendová akce(.+)?, \d?\d.( ledna| února| března| dubna| května| června| července| srpna| září| října| listopadu| prosince)?( až |–| – )\d?\d. (ledna|února|března|dubna|května|června|července|srpna|září|října|listopadu|prosince) 20\d\d" placeholder="Víkendová nabídka z otevřené kuchyně, 14. až 15. dubna 2018">Akce, od–do</set>
+  <var var="cms-server" fn="formatheadingnbsp" id="vikendova-akce" required="required">Víkendová akce, 29. února až 1. března 2020</var>
+  <var var="cms-server" id="akce-popis">Přes víkendy nabízíme jídla z otevřené kuchyně a v letní sezoně grilování a rožnění v naší unikátní venkovní peci.</var>
+  <set type="textarea" for="akce-predkrm\d+" pattern="[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ][^\/0-9]+(, \d{1,4} g)?\n\s*[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ].*\.(\n(.+ )?\d{1,3} Kč){1,2}" placeholder="Tatarský steak ze svíčkové, 50 g&#10;Námi míchaný 50g tataráček s topinkami a česnekem.&#10;129 Kč">Předkrmy</set>
+  <var var="cms-server" fn="formatjidlo" id="akce-predkrm1" required="required">Tatarský steak ze svíčkové&#13;
+Námi míchaný, topinky s česnekem a kapary.&#13;
+50 g 129 Kč&#13;
+150 g 289 Kč</var>
+  <var var="cms-server" fn="formatjidlo" id="akce-predkrm2"/>
+  <var var="cms-server" fn="formatjidlo" id="akce-predkrm3"/>
+  <set type="textarea" for="akce-jidlo\d+" pattern="[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ][^\/0-9]+(, \d{1,4} g)?\n\s*[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ].*\.(\n(.+ )?\d{1,3} Kč){1,2}" placeholder="Tatarský steak ze svíčkové, 150 g&#10;Námi míchaný 150g tataráček s topinkami a česnekem.&#10;289 Kč">Hlavní jídla akce</set>
+  <var var="cms-server" fn="formatjidlo" id="akce-jidlo1" required="required">Konfitované kachní stehno&#13;
+Pomalu pečené maso v kachním sádle, naše bramborové knedlíky, červené vinné zelí, smažená cibulka.&#13;
+259 Kč</var>
+  <var var="cms-server" fn="formatjidlo" id="akce-jidlo2">Řízek z krkovice, 200 g&#13;
+V trojobalu dozlatova smažený řízek z libové krkovice, náš bramborový salát, citron.&#13;
+219 Kč</var>
+  <var var="cms-server" fn="formatjidlo" id="akce-jidlo3"/>
+  <var var="cms-server" fn="formatjidlo" id="akce-jidlo4"/>
+  <var var="cms-server" fn="formatjidlo" id="akce-jidlo5"/>
+  
+  <set type="textarea" for="poledni-nabidka-hot-.*" pattern="[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ][^\/0-9]+(, \d{1,4} g)?\n\s*[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ].*\.(\n(.+ )?\d{1,3} Kč){1,2}" placeholder="Tatarský steak ze svíčkové, 150 g&#10;Námi míchaný 150g tataráček s topinkami a česnekem.&#10;289 Kč">Polední nabídka – teplá jídla</set>
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-hot-polevka1">Lososový krém&#13;
+Krémová polévka s kousky lososa a hráškem.&#13;
+malá 49 Kč&#13;
+velká 55 Kč</var>
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-hot-polevka2"/>
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-hot-jidlo1">Vepřový bůček po Provensálsku&#13;
+Pomalu pečený vepřový bůček bez kosti a kůže, marinovaný v jablečném cideru s provensálským kořením, náš bramborový knedlík, kysané zelí, smažená cibulka, šťáva z výpeku.&#13;
+169 Kč</var>
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-hot-jidlo2">Burger s trhaným vepřovým&#13;
+Trhaná vepřová žebra s naší BBQ omáčkou v sezamové bulce, česnekový dip, ledový salát, rajče, červená cibule, hranolky, coleslaw.&#13;
+199 Kč</var>
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-hot-jidlo3">Geschnetzeltes&#13;
+Švýcarská specialita, na nudličky krájená vepřová panenka v delikátní smetanové omáčce s bílým vínem a žampiony, jasmínová rýže.&#13;
+179 Kč</var>
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-hot-jidlo4">Kuřecí stehno&#13;
+Kuřecí maso pečené v naší peci, mléčná bramborová kaše, kukuřice O'Brien.&#13;
+169 Kč</var>
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-hot-jidlo5"/>
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-hot-jidlo5"/>
+  
+  <set type="textarea" for="poledni-nabidka-cold-.*" pattern="[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ][^\/0-9]+(, \d{1,4} g)?\n\s*[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ].*\.(\n(.+ )?\d{1,3} Kč){1,2}" placeholder="Tatarský steak ze svíčkové, 150 g&#10;Námi míchaný 150g tataráček s topinkami a česnekem.&#10;289 Kč">Polední nabídka – studená jídla</set>
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-cold-polevka1"/>
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-cold-polevka2"/>
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-cold-jidlo1">Přírodní hovězí roštěná&#13;
+Plátek nízkého roštěnce z českého chovu dušený s cibulí v delikátní omáčce, jasmínová rýže.&#13;
+189 Kč</var>
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-cold-jidlo2">Balkánský džuveč&#13;
+Směs dušeného vepřového masa (plec), cibule, červené a bíle papriky, rajčata, cuketa a rýže.&#13;
+159 Kč</var>
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-cold-jidlo3">Vepřová plec na paprice&#13;
+Pomalu dušená vepřová plec v delikátní smetanové omáčce s červenou paprikou, naše špecle.&#13;
+169 Kč</var>
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-cold-jidlo4">Hovězí guláš&#13;
+Dušená libová hovězí kližka s cibulí a červenou paprikou, naše špekové knedlíky.&#13;
+169 Kč</var>
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-cold-jidlo5"/>
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-cold-jidlo5">Carbonade flamande&#13;
+  <var var="cms-server" fn="formatjidlo" id="poledni-nabidka-cold-jidlo6"></var>
+  
+  <set type="textarea" for="nabidka-pivo" pattern="[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ].+\n\s*[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ].*.\nhttps?:\/\/.+(\n\d,\d l \d+ Kč)+" placeholder="Benedict ležák 12°&#10;Klasická světlá dvanáctka z Břevnovského klášterního pivovaru. Vyrobena tradičním způsobem. Vyznačuje se plností a silnou chutí s jemnou hořkostí.&#10;0,3 l 32 Kč&#10;0,5 l 47 Kč">Speciální nabídka piva</set>
+  <var var="cms-server" fn="formatpivo" id="nabidka-pivo">Bohemian Lager 11° (víkendová nabídka)&#13;
+Ležák má plnější sladové tělo, vyváženou hořkost s jemným chmelovým aroma pocházející z chmele Agnus a Žateckého poloraného červeňáku.&#13;
+https://pivovari.cz/wp-content/uploads/2019/11/pivovar-libertas-logo.png&#13;
+0,3 l 30 Kč&#13;
+0,5 l 48 Kč</var>
+  <set type="textarea" for="upozorneni" pattern=".{0,150}" placeholder="Dne 22. ledna 2019 bude restaurace z technických důvodů uzavřena. Děkujeme za pochopení.">Upozornění</set>
+  <var var="cms-server" id="upozorneni"/>
+  <fn id="formathlavickaakce" fn="pregreplace" pattern="(.+)\n(.+)\n(.+)" replacement="&lt;a href='\2' class='button button-img button-img-inline'&gt;&lt;span class='\3'&gt;i&lt;/span&gt; \1&lt;/a&gt;"/>
+  <set type="textarea" for="hlavicka-akce" pattern="[^\n]{4,30}\n\s*https?:\/\/[^\n]+\n\s*fa[sr] [a-z]{2}(-[a-z]{2,})+" placeholder="Velikonoční rožnění&#10;https://www.facebook.com/events/2265134597146002&#10;far fa-egg">Tlačítko akce</set>
+  <var id="hlavicka-akce" fn="formathlavickaakce">Velikonoční rožnění&#13;
+https://www.facebook.com/events/2265134597146002&#13;
+far fa-egg</var>
+<!--   <var id="lock">Administrace je uzamčená z důvodu údržby. Zkuste to později nebo kontaktujte administrátory webu.</var> -->
+
+</InputVar>

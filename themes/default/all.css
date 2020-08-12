@@ -28,7 +28,7 @@ h2.break {
   margin-bottom: 0.25em;
 }
 #content .meal dt > svg {
-  display: none;
+  /* display: none; */
 }
 .meal dd {
   margin-left: 0;
@@ -83,10 +83,15 @@ h2.break {
 }
 .information svg,
 .meal svg {
-  font-size: 1.25em;
-  margin-left: 0.25em;
+  font-size: 1em;
+  margin-right: 0.25em;
   position: relative;
-  top: 0.15em;
+  top: 0em;
+}
+.meal a[href="#signature"] svg {
+  margin-left: 0.2em;
+  position: relative;
+  top: 0.1em;
 }
 .information svg {
   margin-left: 0;
@@ -95,6 +100,15 @@ h2.break {
 .hamburgers_and_pasta .meal svg,
 .grill_griddle .meal svg {
   color: white;
+}
+.meal .tag {
+  margin-left: 0.5em;
+}
+.meal .tag svg {
+  padding: 0;
+  margin: 0;
+  margin-right: 0.25em;
+  color: #000 !important;
 }
 /*
 @media all and (min-width: 30em) {

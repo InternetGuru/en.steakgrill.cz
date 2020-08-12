@@ -46,7 +46,7 @@
         <dt var="nopasswd"><label for="inputvar-passwd">Heslo</label></dt>
         <dd var="nopasswd"><input name="passwd" required="required" type="password" id="inputvar-passwd"/></dd>
         <dt> </dt>
-        <dd><input type="hidden" var="userfilehash@value" name="userfilehash"/><input type="submit" name="save" class="button" value="Uložit" var="submitlock@disabled"/><input type="submit" name="send" class="button" value="Odeslat administrátorovi" formnovalidate="formnovalidate"/></dd>
+        <dd><input type="hidden" var="userfilehash@value" name="userfilehash"/><input type="submit" name="save" class="button" value="Uložit" var="submitlock@disabled"/><input type="submit" name="send" class="button" value="Odeslat administrátorovi" formnotvalidate="formnotvalidate"/></dd>
       </dl>
     </fieldset>
   </form>

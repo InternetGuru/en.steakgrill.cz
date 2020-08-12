@@ -7,6 +7,7 @@
       <div class="part menu-nested">
         <div>
           <xsl:apply-templates select="*[not(contains(@class, 'section'))]"/>
+          <xsl:copy-of select="//div[contains(@class, 'references')]"/>
         </div>
       </div>
       <xsl:apply-templates select="div[contains(@class, 'section')]"/>
@@ -30,12 +31,21 @@
   </xsl:template>
   
   <!-- CARD -->
-  <!-- daily_offer, weekend_events -->
+  <!-- daily_offer, special -->
   <!-- frying_pan_wok, desserts, side_dishes, condiments_and_sauces on regular_menu -->
   <!-- steaks on about_us -->
-  <xsl:template match="div[contains(@class, 'frying_pan_wok') or contains(@class, 'daily_offer') or contains(@class, 'weekend_events') or contains(@class, 'desserts') or contains(@class, 'side_dishes') or contains(@class, 'condiments_and_sauces') or contains(@class, 'part steaks')]/div">
+  <!-- cold_meals hot_meals -->
+  <xsl:template match="div[contains(@class, 'frying_pan_wok') or contains(@class, 'daily_offer') or contains(@class, 'special') or contains(@class, 'desserts') or contains(@class, 'side_dishes') or contains(@class, 'condiments_and_sauces') or contains(@class, 'part steaks') or contains(@class, 'part hot_meals') or contains(@class, 'part cold_meals')]/div">
     <xsl:copy>
       <xsl:attribute name="class">content-card</xsl:attribute>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:copy>
+  </xsl:template>
+  <!-- special -->
+  <xsl:template match="div[contains(@class, 'special')]/div">
+    <xsl:copy>
+      <xsl:attribute name="class">content-card</xsl:attribute>
+      <xsl:attribute name="data-visibility">/nabidka</xsl:attribute>
       <xsl:apply-templates select="node()|@*"/>
     </xsl:copy>
   </xsl:template>
@@ -55,15 +65,19 @@
     </xsl:copy>
   </xsl:template>
   
+  <!-- references on main page -->
+  <xsl:template match="div[contains(@class, 'references')]/div[ancestor::body[@data-link='/']]">
+  </xsl:template>
+  
   <!-- GROUP -->
-  <!-- daily_offer, weekend_events, pivo -->
+  <!-- daily_offer, special, pivo -->
   <xsl:template match="div[contains(@class, 'daily_offer')][ancestor::body[@data-link='/menu'] or ancestor::body[@data-link='/nabidka']]">
-    <xsl:text disable-output-escaping="yes">&lt;div class="part content-group daily_any_weekend"&gt;&lt;div&gt;</xsl:text>
+    <xsl:text disable-output-escaping="yes">&lt;div class="part content-group daily_any_special"&gt;&lt;div&gt;</xsl:text>
     <xsl:copy>
       <xsl:apply-templates select="node()|@*"/>
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="div[contains(@class, 'weekend_events')][ancestor::body[@data-link='/menu'] or ancestor::body[@data-link='/nabidka']]">
+  <xsl:template match="div[contains(@class, 'special')][ancestor::body[@data-link='/menu'] or ancestor::body[@data-link='/nabidka']]">
     <xsl:copy>
       <xsl:apply-templates select="node()|@*"/>
     </xsl:copy>
@@ -77,6 +91,19 @@
     </xsl:copy>
   </xsl:template>
   <xsl:template match="div[contains(@class, 'condiments_and_sauces')]">
+    <xsl:copy>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:copy>
+    <xsl:text disable-output-escaping="yes">&lt;/div&gt;&lt;/div&gt;</xsl:text>
+  </xsl:template>
+  <!-- cold_meals hot_meals -->
+  <xsl:template match="div[contains(@class, 'part hot_meals')]">
+    <xsl:text disable-output-escaping="yes">&lt;div class="part content-group cold_hot_meals"&gt;&lt;div&gt;</xsl:text>
+    <xsl:copy>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="div[contains(@class, 'part cold_meals')]">
     <xsl:copy>
       <xsl:apply-templates select="node()|@*"/>
     </xsl:copy>
@@ -105,7 +132,7 @@
   
   <!-- NAVIGATION -->
   <!-- beverages, wine_list, regular_menu -->
-  <xsl:template match="div[@class='contenttoc section'][ancestor::body[@data-link='/regular_menu'] or ancestor::body[@data-link='/wine_list'] or ancestor::body[@data-link='/beverages']]">
+  <xsl:template match="div[@class=' section'][ancestor::body[@data-link='/regular_menu'] or ancestor::body[@data-link='/wine_list'] or ancestor::body[@data-link='/beverages']]">
     <xsl:copy>
       <xsl:apply-templates select="node()|@*"/>
       <ul class="button-list">
@@ -115,7 +142,7 @@
       </ul>
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="div[@class='contenttoc section'][ancestor::body[@data-link='/stala_nabidka'] or ancestor::body[@data-link='/vinny_listek'] or ancestor::body[@data-link='/napojovy_listek']]">
+  <xsl:template match="div[@class=' section'][ancestor::body[@data-link='/stala_nabidka'] or ancestor::body[@data-link='/vinny_listek'] or ancestor::body[@data-link='/napojovy_listek']]">
     <xsl:copy>
       <xsl:apply-templates select="node()|@*"/>
       <ul class="button-list">

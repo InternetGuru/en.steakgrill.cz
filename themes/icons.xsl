@@ -5,18 +5,28 @@
     <xsl:copy>
       <xsl:choose>
         <xsl:when test="parent::dl[@data-type='Main meal']">
-          <span class="fas fa-steak">i</span>
+          <span class="fal fa-steak">i</span>
         </xsl:when>
         <xsl:when test="parent::dl[@data-type='Starter']">
-          <span class="fas fa-croissant">i</span>
+          <span class="fal fa-bacon">i</span>
         </xsl:when>
         <xsl:when test="parent::dl[@data-type='Soup']">
-          <span class="fas fa-soup">i</span>
+          <span class="fal fa-soup">i</span>
         </xsl:when>
-        <xsl:when test="parent::dl[@data-type='Beer']">
-          <span class="fas fa-beer">i</span>
+        <xsl:when test="parent::dl[@data-type='Dessert']">
+          <span class="fal fa-ice-cream">i</span>
+        </xsl:when>
+        <xsl:when test="parent::dl[@data-type='Pastry']">
+          <span class="fal fa-croissant">i</span>
         </xsl:when>
       </xsl:choose>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+  
+  <xsl:template match="//dl[contains(@class, 'meal')][@data-type='Beer']/dd[1]">
+    <xsl:copy>
+      <span class="fas fa-beer">i</span>
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>

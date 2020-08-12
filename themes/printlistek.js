@@ -214,31 +214,33 @@
     
     var printable = new Printable()
     printable.init({
-      styles: styles + 'body > div { height: fit-content; max-height: 33.3vh; overflow: hidden; } div > div { padding-bottom: 13mm; } h1 { padding: 4mm 1rem; } dl { padding: 0 1rem 4mm 1rem; } body > div:before { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; margin: 0; height: 13mm; background:  rgba(0, 0, 0, 0.05); z-index: 1; }',
-      parentSelector: '#denni_specialita, #daily_offer',
+      //styles: styles + 'body > div { height: fit-content; max-height: 33.3vh; overflow: hidden; } div > div { padding-bottom: 13mm; } h1 { padding: 4mm 1rem; } dl { padding: 0 1rem 4mm 1rem; } body > div:before { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; margin: 0; height: 13mm; background:  rgba(0, 0, 0, 0.05); z-index: 1; }',
+      styles: styles + " body > div { width: 50%; height: 100%; overflow: hidden; }",
+      parentSelector: '#denni_nabidka, #daily_offer',
 //       printButtonText: 'Vytisknout denní nabídku',
       printButtonText: '',
-      childrenSelector: [".daily_offer dl.meal[data-type='Soup']", ".daily_offer dl.meal[data-type='Main meal']"],
-      allChildren: true
+      childrenSelector: [".daily_offer dl.meal[data-type='Soup']", ".daily_offer dl.meal[data-type='Starter']", ".daily_offer dl.meal[data-type='Main meal']"],
+      allChildren: true,
+      copies: 2
     })
     
     var printable2 = new Printable()
     printable2.init({
       styles: styles + " body > div { width: 50%; height: 100%; }",
-      parentSelector: '#akce, #weekend_events',
+      parentSelector: '#special',
 //       printButtonText: 'Vytisknout víkendovou nabídku',
       printButtonText: '',
-      childrenSelector: [".weekend_events dl.meal[data-type='Starter']", ".weekend_events dl.meal[data-type='Main meal']"],
+      childrenSelector: [".special dl.meal[data-type='Starter']", ".special dl.meal[data-type='Main meal']"],
       allChildren: true
     })
     
     var printable3 = new Printable()
     printable3.init({
-      styles: styles + " img { max-width: 8em; }",
+      styles: styles + " img { max-width: 8em; } dl.meal dt + dd { font-size: 12pt; font-weight: 500; margin-bottom: 0.3em; }",
       parentSelector: '#pivo, #beer',
 //       printButtonText: 'Vytisknout speciální nabídku piva',
       printButtonText: '',
-      childrenSelector: [".beer p", ".beer dl.meal[data-type='Beer']"]
+      childrenSelector: [".beer dl.meal[data-type='Beer']"]
     })
 
   });

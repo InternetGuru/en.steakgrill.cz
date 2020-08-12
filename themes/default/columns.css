@@ -1,10 +1,10 @@
 @charset "UTF-8";
 /*********************************/
-div.list.multiple > div {
+div.list-wrapper--multiple > div {
   display: flex;
   flex-wrap: wrap;
 }
-div.list.multiple div > * {
+div.list-wrapper--multiple div > * {
   flex: 0 1 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -13,14 +13,14 @@ div.list.multiple div > * {
 }
 
 @media (min-width: 50em) {
-  div.list.multiple div > *.card-lm {
+  div.list-wrapper--multiple div > *.card-lm {
     flex: 0 1 50%;
     max-width: 50%;
   }
 }
 /*********************************
 @media (min-width: 62em) {
-  div.list.multiple div > *:not(.meal) {
+  div.list-wrapper--multiple div > *:not(.meal) {
     flex: 0 1 33.33%;
     max-width: 33.3%;
   }

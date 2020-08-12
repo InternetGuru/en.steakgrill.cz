@@ -8,11 +8,9 @@
   </xsl:template>
   
   <xsl:template match="legend">
-    <xsl:element name="h2">
-      <xsl:attribute name="class">hideable hideable-nohide</xsl:attribute>
-<!--       <xsl:attribute name="id"><xsl:copy-of select="generate-id()"/></xsl:attribute> -->
+    <h2 class="hideable hideable-nohide" id="{@id}">
       <xsl:copy-of select="text()"/>
-    </xsl:element>
+    </h2>
   </xsl:template>
   
   <xsl:template match="form[contains(@id, 'inputvarform')]">

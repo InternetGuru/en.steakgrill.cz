@@ -1,30 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <HtmlOutput>
-  <stylesheet media="print">themes/print-listek.css</stylesheet>
-  <xslt>themes/default/h1desc.xsl</xslt>
-  <xslt>themes/delna.xsl</xslt>
-  <xslt>themes/default/part.xsl</xslt>
+<!--   <xslt>themes/default/h1desc.xsl</xslt> -->
+<!--   <xslt>themes/delna.xsl</xslt> -->
+<!--   <xslt>themes/default/part.xsl</xslt> -->
+<!--   <xslt>themes/visibility.xsl</xslt> -->
+<!--   <jsFile append="head">themes/webfont.js</jsFile> -->
+<!--   <jsFile append="head">themes/fontloader.js</jsFile> -->
+<!--   <jsFile append="head">themes/gtm.js</jsFile> -->
+<!--   <jsFile append="body">themes/fa.js</jsFile> -->
+
+  <var id="theme">sg</var>
+  <themes>
+    <theme id="sg">
+      <!-- js -->
+      <jsFile append="body">themes/lib/fa.js</jsFile>
+      <jsFile append="head">themes/lib/webfont.js</jsFile>
+      <jsFile append="head">themes/lib/fontloader.js</jsFile>
+      <jsFile append="body" if-xpath="//div[contains(@class, 'messages')]">themes/components/messages.js</jsFile>
+      <!-- xslt -->
+      <xslt>themes/layout/group.xsl</xslt>
+      <xslt>themes/components/list.xsl</xslt>
+      <xslt>themes/layout/layout.xsl</xslt>
+      <xslt>themes/layout/h1desc.xsl</xslt>
+      <xslt>themes/layout/part.xsl</xslt>
+<!--       <xslt if-xpath="/body[not(contains(@class, 'admin'))]">themes/layout/hdesc.xsl</xslt> -->
+      <xslt>themes/layout/footer.xsl</xslt>
+      <xslt>themes/lib/ielte7.xsl</xslt>
+      <xslt>themes/layout/adminmenu.xsl</xslt>
+      <xslt>themes/components/messages.xsl</xslt>
+      <xslt>themes/lib/delna.xsl</xslt>
+      <!-- css -->
+      <stylesheet>themes/lib/reset.css</stylesheet>
+      <stylesheet media="print">themes/lib/print.css</stylesheet>
+      <stylesheet>themes/variables/animation.css</stylesheet>
+      <stylesheet>themes/variables/color.css</stylesheet>
+      <stylesheet>themes/variables/indent.css</stylesheet>
+      <stylesheet>themes/variables/shadow.css</stylesheet>
+      <stylesheet>themes/variables/typography.css</stylesheet>
+      <stylesheet>themes/components/messages.css</stylesheet>
+      <stylesheet>themes/components/fa.css</stylesheet>
+      <stylesheet media="screen">themes/default/screen.css</stylesheet>
+      <stylesheet media="all">themes/default/all.css</stylesheet>
+      <stylesheet>themes/default/columns.css</stylesheet>
+      <stylesheet>themes/default/form.css</stylesheet>
+<!--       <stylesheet>themes/components/link.css</stylesheet> -->
+<!--       <stylesheet>themes/components/list.css</stylesheet> -->
+<!--       <stylesheet>themes/components/card.css</stylesheet> -->
+<!--       <stylesheet>themes/components/colum.css</stylesheet> -->
+<!--       <stylesheet>themes/components/form.css</stylesheet> -->
+      <stylesheet>themes/components/breadcrumb.css</stylesheet>
+<!--       <stylesheet>themes/components/button.css</stylesheet> -->
+<!--       <stylesheet>themes/components/globalmenu.css</stylesheet> -->
+<!--       <stylesheet if-xpath="//*[contains(@class, 'photoswipe')]">themes/components/photoswipe.css</stylesheet> -->
+<!--       <stylesheet>themes/layout/global.css</stylesheet> -->
+<!--       <stylesheet>themes/layout/header.css</stylesheet> -->
+<!--       <stylesheet>themes/layout/content.css</stylesheet> -->
+<!--       <stylesheet>themes/layout/footer.css</stylesheet> -->
+<!--       <stylesheet media="not print">themes/layout/hdesc.css</stylesheet> -->
+<!--       <stylesheet>themes/layout/part.css</stylesheet> -->
+      <!-- componets -->
+      <jsFile append="body" if-xpath="//body[contains(@class, 'inputvar')] | //select">themes/components/completable.js</jsFile>
+      <jsFile append="body" if-xpath="//form[contains(@class, 'file-list')]">themes/components/completable-footer.js</jsFile>
+      <stylesheet if-xpath="//body[contains(@class, 'inputvar')] | //select[contains(@class, 'completable')]">themes/components/completable.css</stylesheet>
+    </theme>
+  </themes>
+  <jsFile id="js32" append="body" if-xpath="//body[contains(@class, 'inputvar')] | //select">lib/mousetrap.min.js</jsFile>
+  
   <xslt>themes/contenttoc.xsl</xslt>
   <xslt>themes/inputvar.xsl</xslt>
   <xslt>themes/icons.xsl</xslt>
   <xslt>themes/menu.xsl</xslt>
-  <xslt>themes/visibility.xsl</xslt>
   <xslt>themes/special.xsl</xslt>
   <xslt>themes/headerbutton.xsl</xslt>
-<!--   <jsFile append="head">themes/webfont.js</jsFile> -->
-<!--   <jsFile append="head">themes/fontloader.js</jsFile> -->
-<!--   <jsFile append="head">themes/gtm.js</jsFile> -->
-  <jsFile append="head" if-xpath="//h1[@id='nabidka' or @id='menu']">themes/printlistek.js</jsFile>
+  <xslt>themes/lib/visibility.xsl</xslt>
+  <xslt if-xpath="//*[contains(@class,'tocable')]">themes/components/tocable.xsl</xslt>
+  <xslt if-xpath="//body[contains(@class,'inputvar')]">themes/layout/inputvar.xsl</xslt>
+
+  
+  <stylesheet>themes/default.css</stylesheet>
+  <stylesheet media="print">themes/print-listek.css</stylesheet>
+  <jsFile append="head" if-xpath="//h1[@id='nabidka' or @id='menu']">themes/printlistek.js</jsFile>  
   <jsFile append="body">themes/alert.js</jsFile>
-  <jsFile append="body">themes/fa.js</jsFile>
   <jsFile append="body">themes/slideable.js</jsFile>
   <jsFile append="body" if-xpath="//body[contains(@class, 'inputvar')]">themes/inputvar.data.js</jsFile>
   <jsFile append="body" if-xpath="//body[contains(@class, 'inputvar')]">themes/inputvar.js</jsFile>
-  
-  <jsFile id="js32" append="body" if-xpath="//body[contains(@class, 'inputvar')] | //select">lib/mousetrap.min.js</jsFile>
-  <jsFile id="js33" append="body" if-xpath="//body[contains(@class, 'inputvar')] | //select">themes/completable.js</jsFile>
-  <stylesheet id="ss1" if-xpath="//body[contains(@class, 'inputvar')] | //select[contains(@class, 'completable')]">themes/completable.css</stylesheet>
-  
   <jsFile append="body" if-xpath="//body[contains(@class, 'catering')]">themes/catering.js</jsFile>
   
   <allow_domain>en.steakgrill.cz</allow_domain>

@@ -11,6 +11,7 @@
           option.setAttribute("data-name", data[i].name)
           option.setAttribute("data-date", data[i].date)
           option.setAttribute("data-desc", data[i].desc)
+          option.setAttribute("data-desc2", data[i].desc2)
           option.setAttribute("data-price", data[i].price)
           select.appendChild(option)
         }
@@ -39,8 +40,10 @@
                 if (!navig.value || !file) {
                   return
                 }
+                var desc2 = file.origElm.getAttribute("data-desc2")
                 textarea.value = file.origElm.getAttribute("data-name") + "\n"
                   + file.origElm.getAttribute("data-desc") + "\n"
+                  + (desc2 ? file.origElm.getAttribute("data-desc2") + "\n" : "")
                   + file.origElm.getAttribute("data-price").replace("~", "\n")
                 textarea.dispatchEvent(new Event('input'))
                 navig.value = ""
@@ -49,6 +52,7 @@
             })(),
             submitOnEnter: false,
             sendOnEmpty: true,
+            appendValue: false,
             decorateListItem: function (itemValue) {
               return itemValue.replace(/ – /g, "</br>")
             },
@@ -83,16 +87,17 @@
   var nabidka = document.getElementById("inputvar-nabidka")
   var nabidkadd = nabidka.parentNode
   var date = new Date()
-  var date1Buttton = getButton("Dnes", nabidka, "Denní specialita, " + getCzechDate(date))
+  var date1Buttton = getButton("Dnes", nabidka, "Denní nabídka, " + getCzechDate(date))
   date.setDate(date.getDate() + 1)
-  var date2Buttton = getButton("Zítra", nabidka, "Denní specialita, " + getCzechDate(date))
+  var date2Buttton = getButton("Zítra", nabidka, "Denní nabídka, " + getCzechDate(date))
   date.setDate(date.getDate() + 1)
-  var date3Buttton = getButton("Pozítří", nabidka, "Denní specialita, " + getCzechDate(date))
+  var date3Buttton = getButton("Pozítří", nabidka, "Denní nabídka, " + getCzechDate(date))
   nabidkadd.appendChild(date1Buttton)
   nabidkadd.appendChild(date2Buttton)
   nabidkadd.appendChild(date3Buttton)
 
-  var akce = document.getElementById("inputvar-vikendova-akce")
+
+  var akce = document.getElementById("inputvar-special")
   var akcedd = akce.parentNode
   var date = new Date()
   date = getClosestDate(date, 6)
