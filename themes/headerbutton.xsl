@@ -5,9 +5,15 @@
   
   <xsl:template match="//p[preceding-sibling::h1[1][contains(@id, 'steakgrill')]]">
     <xsl:copy-of select="."/>
-    <xsl:if test="$inputvar-hlavicka-akce">
-      <xsl:value-of disable-output-escaping="yes" select="$inputvar-hlavicka-akce"/>
-   </xsl:if>
+    <ul class="button-list">
+      <xsl:if test="$inputvar-hlavicka-akce">
+        <li><xsl:value-of disable-output-escaping="yes" select="$inputvar-hlavicka-akce"/></li>
+      </xsl:if>
+      <li><a class="button button-img" href="#denni_nabidka"><span class="fas fa-3x fa-utensils">i</span>Denní nabídka</a></li>
+      <li><a class="button button-img" href="#stala_nabidka"><span class="fas fa-3x fa-clipboard-list">i</span>Stálá nabídka</a></li>
+      <li><a class="button button-img" href="https://www.google.cz/maps/place/STEAKGRILL/@50.389696,14.225149,15z/data=!4m5!3m4!1s0x0:0x3b8b2745f392b1bb!8m2!3d50.389696!4d14.225149?sa=X&amp;ved=0ahUKEwjuwdqnv6TUAhWBmhQKHWYwC7QQ_BIIdTAK&amp;shorturl=1&amp;dg=dbrw&amp;newdg=1"><span class="fas fa-3x fa-map-marker-alt">i</span>Kde nás najdete</a></li>
+      <li><a class="button button-img" href="https://www.facebook.com/Steakgrill/"><span class="fab fa-3x fa-facebook">i</span>Náš Facebook</a></li>
+    </ul>
   </xsl:template>
   
   <xsl:template match="node()|@*">
