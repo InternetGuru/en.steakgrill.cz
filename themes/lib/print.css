@@ -1,5 +1,5 @@
-oiti*t, *:before, *:after {color: black !important;background: transparent !important;text-shadow: none !important;border-color: #5e5e5e !important;box-shadow: none !important;}
-h1, h2, h3 {font-weight: normal; page-break-after: avoid; page-break-inside: avoid;}
+*, *:before, *:after {color: black !important;background: transparent !important;text-shadow: none !important;border-color: #5e5e5e !important;box-shadow: none !important;}
+h1, h2, h3 {font-weight: normal; page-break-after: avoid; page-break-inside: avoid; page-break-before: avoid !important;}
 body {font-size:10pt;font-family: Charter, Georgia, sans;}
 @page {size: auto; margin: 21mm 20mm;}
 .print {display: initial;}
