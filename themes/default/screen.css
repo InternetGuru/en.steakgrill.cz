@@ -476,9 +476,6 @@ svg.fa-facebook {
   width: 15.1em;
   max-width: 100%;
 }
-#content .contact  li + li .button {
-  width: 19.1em;
-}
 /*********************************/
 #content .meal {
   margin: 0 auto;
@@ -536,7 +533,14 @@ svg.fa-facebook {
   margin-bottom: 0.7em;
 }
 #content .card.color {
-  max-width: 8em;
+  max-width: 9em;
+}
+#content .card.color .hideable-nohide {
+  height: 6em;
+  overflow: hidden;
+}
+#content .card.color img {
+  border-radius: 0.25em 0.25em 0 0;
 }
 #content .card.brief,
 #content .card.color {
@@ -585,7 +589,6 @@ svg.fa-facebook {
 .section > .part:first-child {
   background: #FAFAFA;
 }
-.section > .part.references,
 .section > .part.sparkling_wines_and_prosecco,
 .section > .part.alcoholic {
   background: none;
@@ -604,7 +607,7 @@ svg.fa-facebook {
 .part.menu {
   background: url("/files/design/menu.jpg") center no-repeat;
 }
-#content .section > .part.contact_form {
+.part.contact_form {
   background: url("/files/design/cf.jpg") center top no-repeat;
 }
 .part.contact {
@@ -637,14 +640,14 @@ svg.fa-facebook {
 .part.steaks {
   background: #ddd url("/files/design/steaks-raw.jpg") center no-repeat;
 }
-@media (min-width: 62em) {
+@media all and (min-width: 62em) {
   .part.about_us {
     background-image: url("/files/full/design/about.jpg");
   }
   .part.menu {
     background-image: url("/files/full/design/menu.jpg");
   }
-  #content .section > .part.contact_form {
+  .part.contact_form {
     background-image: url("/files/full/design/cf.jpg");
   }
   .part.contact {
@@ -975,34 +978,16 @@ svg.fa-facebook {
   border-bottom: none !important;
 }
 .js-slideable-left {
-  left: -4em !important;
+  left: 15% !important;
 }
 .js-slideable-right {
-  right: -4em !important;
-}
-@media all and (max-width: 35em) {
-  .js-slideable-left,
-  .js-slideable-right {
-    top: 1.55em;
-  }
-  .js-slideable-left {
-    left: 5% !important;
-  }
-  .js-slideable-right {
-    right: 5% !important;
-  }
+  right: 15% !important;
 }
 .js-slideable-left:hover,
 .js-slideable-right:hover,
 .js-slideable-left:focus,
 .js-slideable-right:focus {
   color: #616161 !important;
-}
-.js-slideable-left {
-  left: -1em;
-}
-.js-slideable-right {
-  right: -1em;
 }
 /*********************************/
 #content .contenttoc {
@@ -1469,7 +1454,7 @@ body.inputvar #inputvarform input[name="save"] {
 .js-slideable-right {
   transition: 0.25s ease-out;
   position: absolute;
-  bottom: 4em;
+  top: 1.7em;
   color: #616161 !important;
   color: rgba(97, 97, 97, 0.39) !important;
   height: 5em;
@@ -1667,5 +1652,22 @@ body .definition--href {
 body .definition__close:hover {
   background: #EF5350;
   color: white;
+}
+/*********************************/
+.hdesc.manual + div + div.section .hideable {
+  padding: 0;
+}
+.hdesc.manual + div + div.section .hideable-switch {
+  width: 100%;
+  display: block;
+  padding: 1em;
+}
+.hdesc.manual + div + div.section .hideable dt[class=""],
+.hdesc.manual + div + div.section .hideable dd[class=""] {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.hdesc.manual + div + div.section .hideable dd:not(.class):last-child {
+  padding-bottom: 1em;
 }
 /*********************************/
