@@ -30,7 +30,6 @@ $inputvar-service_plain
     </dl>
   </form>
 
-  <message for="basic">Name: $name Email: $email Telephone number: $telephone Message: $msg -- Sent from IP address $cms-ip Form $form_id $inputvar-service_plain</message>
   <form id="basic">
     <dl>
       <dt><label for="name">Full name <em>(mandatory)</em></label></dt>
