@@ -49,6 +49,7 @@
   text-align: center;
   letter-spacing: 0.02em;
   background: none;
+  padding-left: 2em !important;
 }
 #header div.hideable-button span:last-child {
   display: none;
@@ -1669,5 +1670,31 @@ body .definition__close:hover {
 }
 .hdesc.manual + div + div.section .hideable dd:not(.class):last-child {
   padding-bottom: 1em;
+}
+/*********************************/
+.globalmenu__item .globalmenu__item--current {
+  position: relative;
+}
+.globalmenu__item .globalmenu__item--current:before,
+#footer .globalmenu__item a:before {
+  content: "•";
+  position: absolute;
+  left: 0.75rem;
+  font-size: 2rem;
+  top: 0.3rem;
+}
+#footer .globalmenu a {
+  border-bottom: none;
+  text-transform: uppercase;
+}
+#footer .globalmenu__item a:before {
+  position: static;
+  line-height: 0;
+  vertical-align: -0.2em;
+  margin-right: 0.2em;
+  visibility: hidden;
+}
+#footer .globalmenu__item .globalmenu__item--current:before {
+  visibility: visible;
 }
 /*********************************/
