@@ -132,7 +132,7 @@
   
   <!-- NAVIGATION -->
   <!-- beverages, wine_list, regular_menu -->
-  <xsl:template match="div[@class=' section'][ancestor::body[@data-link='/regular_menu'] or ancestor::body[@data-link='/wine_list'] or ancestor::body[@data-link='/beverages']]">
+  <xsl:template match="div[contains(@class, 'section')][ancestor::body[@data-link='/regular_menu'] or ancestor::body[@data-link='/wine_list'] or ancestor::body[@data-link='/beverages']]">
     <xsl:copy>
       <xsl:apply-templates select="node()|@*"/>
       <ul class="button-list">
