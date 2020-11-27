@@ -5,4 +5,5 @@
   <ga_id domain="beta.steakgrill.cz">UA-52883188-3</ga_id>
   <ga_id domain="dev.steakgrill.cz">UA-52883188-3</ga_id>
   <ga_id domain="enbeta.steakgrill.cz">UA-52883188-3</ga_id>
+  <var id="ga4">disabled</var>
 </GoogleAnalytics>
