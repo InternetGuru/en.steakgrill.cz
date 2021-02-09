@@ -1672,16 +1672,16 @@ body .definition__close:hover {
   padding-bottom: 1em;
 }
 /*********************************/
-.globalmenu__item .globalmenu__item--current {
+.globalmenu__item--current {
   position: relative;
 }
-.globalmenu__item .globalmenu__item--current:before,
+.globalmenu__item--current:before,
 #footer .globalmenu__item a:before {
   content: "•";
   position: absolute;
   left: 0.75rem;
-  font-size: 2rem;
-  top: 0.3rem;
+  font-size: 1.8rem;
+  top: 0.35rem;
 }
 #footer .globalmenu a {
   border-bottom: none;
@@ -1694,7 +1694,9 @@ body .definition__close:hover {
   margin-right: 0.2em;
   visibility: hidden;
 }
-#footer .globalmenu__item .globalmenu__item--current:before {
+#footer .globalmenu__item--current:before {
   visibility: visible;
+  top: -0.05em;
+  left: 0em
 }
 /*********************************/
