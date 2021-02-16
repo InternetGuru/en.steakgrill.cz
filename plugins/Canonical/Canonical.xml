@@ -2,6 +2,6 @@
 <Canonical>
   <ns domain="beta.steakgrill.cz">www.steakgrill.cz</ns>
   <ns domain="beta.steakgrill.cz">en.steakgrill.cz</ns>
-  <ns domain="enbeta.steakgrill.cz">en.steakgrill.cz</ns>
+  <ns domain="betaen.steakgrill.cz">en.steakgrill.cz</ns>
   <ns domain="dev.steakgrill.cz">en.steakgrill.cz</ns>
 </Canonical>
