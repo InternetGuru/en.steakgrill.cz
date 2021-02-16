@@ -79,7 +79,8 @@
   
   <stylesheet>themes/default.css</stylesheet>
   <stylesheet media="print">themes/print-listek.css</stylesheet>
-  <jsFile append="head" if-xpath="//h1[@id='nabidka' or @id='menu']">themes/printlistek.js</jsFile>  
+  <jsFile append="head" if-xpath="//h1[@id='nabidka' or @id='menu']">themes/printlistek.js</jsFile>
+  <jsFile append="head" if-xpath="//h1[@id='stala_nabidka' or @id='napojovy_listek' or @id='vinny_listek' or @id='fastfood' or @id='stala_nabidka_covid' or @id='nabidka' or @id='menu' or @id='stala_nabidka_tisk' or @id='regular_menu' or @id='beverages' or @id='wine_list']">themes/printlistek_stala.js</jsFile>
   <jsFile append="body">themes/alert.js</jsFile>
   <jsFile append="body">themes/slideable.js</jsFile>
   <jsFile append="body" if-xpath="//body[contains(@class, 'inputvar')]">themes/inputvar.data.js</jsFile>
