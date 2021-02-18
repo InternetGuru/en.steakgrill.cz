@@ -601,6 +601,16 @@ h3[data-id="spirits"] + dl dt {
     var printable = new Printable()
     printable.init({
       styles: styles + styles_2,
+      parentSelector: 'h1#beverages',
+      printButtonText: 'Print (A3 landscape)',
+      //childrenSelector: ["h2, h2 + p, .meal:not(.evening)", ".regular_menu.hdesc > *"],
+      childrenSelector: ["h1", "h2, h2 + p, .meal:not(.evening)"],
+      copies: 1
+    })
+
+    var printable = new Printable()
+    printable.init({
+      styles: styles + styles_2,
       parentSelector: 'h1#vinny_listek',
       printButtonText: 'Tisk (A3 na šířku)',
       //childrenSelector: ["h2, h2 + p, .meal:not(.evening)", ".regular_menu.hdesc > *"],
@@ -609,9 +619,29 @@ h3[data-id="spirits"] + dl dt {
     })
     var printable = new Printable()
     printable.init({
+      styles: styles + styles_2,
+      parentSelector: 'h1#wine_list',
+      printButtonText: 'Print (A3 landscape)',
+      //childrenSelector: ["h2, h2 + p, .meal:not(.evening)", ".regular_menu.hdesc > *"],
+      childrenSelector: ["h2, h2 + p, .meal:not(.evening)", "", "", "h1"],
+      copies: 1
+    })
+    
+    var printable = new Printable()
+    printable.init({
       styles: styles + stales_stala_covid,
       parentSelector: 'h1#stala_nabidka_covid',
       printButtonText: 'Tisk (A4 na šířku)',
+      //childrenSelector: ["h2, h2 + p, .meal:not(.evening)", ".regular_menu.hdesc > *"],
+      childrenSelector: ["h1", "h2, .meal"],
+      copies: 1,
+      separateLast: false,
+    })
+    var printable = new Printable()
+    printable.init({
+      styles: styles + stales_stala_covid,
+      parentSelector: 'h1#regular_menu_covid',
+      printButtonText: 'Print (A4 landscape)',
       //childrenSelector: ["h2, h2 + p, .meal:not(.evening)", ".regular_menu.hdesc > *"],
       childrenSelector: ["h1", "h2, .meal"],
       copies: 1,
