@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<body xml:lang="cs" ns="https://beta.steakgrill.cz">
+  <h id="regular_menu_print" author="Internet Guru" ctime="2021-01-11">Regular Menu</h>
+  <desc>n/a</desc>
+  <section>
+    <h id="regular_menu" src="../../stala_nabidka.html">Stálá nabídka jídel</h>
+    <desc>Stálá nabídka jídel není k dispozici</desc>
+    <h id="beverages" src="../../napojovy_listek.html">Nápojový lístek</h>
+    <desc>Nápojový lístek není k dispozici</desc>
+    <h id="wine_list" src="../../vinny_listek.html">Vinný lístek</h>
+    <desc>Vinný lístek není k dispozici</desc>
+  </section>
+</body>
