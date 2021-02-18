@@ -148,7 +148,7 @@ strong {
 #footer a,
 #content a {
   color: #b6150d;
-  border-bottom: 0 none;
+  border-bottom: thin solid rgb(255 255 255 / 24%);
 }
 .breadcrumb a {
   border: none;
@@ -330,7 +330,7 @@ body:not([data-link="/"]) .hdesc:before {
 }
 #footer a {
   color: white;
-  padding: 0.5em 0;
+  margin: 0.5em 0;
   display: inline-block;
 }
 /*
@@ -391,6 +391,12 @@ body:not([data-link="/"]) .hdesc:before {
   justify-content: center;
   padding: 0;
 }
+body[data-link="/nabidka"] #content > .hdesc + div .button-list:first-child {
+  margin-bottom: 0;
+}
+body[data-link="/nabidka"] #content > .hdesc + div .button-list + .button-list {
+  margin-top: 0;
+}
 .section > .button-list {
   
 }
@@ -433,9 +439,17 @@ svg.fa-facebook {
   padding: 0.9em 1.5em;
   text-align: left;
 }
+#content .button-print {
+  text-align: left;
+  justify-content: left;
+}
+.button--inactive svg {
+  color: #9E9E9E;
+}
 #content > .hdesc .button {
   font-size: 1.1em;
   border: none !important;
+  height: 100%;
 }
 #content > .hdesc .button-print {
   display: flex;
@@ -587,19 +601,27 @@ svg.fa-facebook {
   display: inline-flex;
   align-items: center;
 }
-.section > .part:first-child {
+.section > .part:first-child,
+.part.salaty-covid {
   background: #FAFAFA;
 }
 .section > .part.sparkling_wines_and_prosecco,
 .section > .part.alcoholic {
   background: none;
 }
-.part.hamburgers_and_pasta .description:after,
+.part.hamburgers_and_burrito .description:after,
 .part.kids_menu .description:after,
 .part.grill_griddle .description:after,
 .part.contact .description:after,
 .part.about_us .description:after {
   background-image: url("/files/design/sep-white.png");
+}
+.part.hamburgers_and_burrito .definition,
+.part.kids_menu .definition,
+.part.grill_griddle .definition,
+.part.contact .definition,
+.part.about_us .definition {
+  border-color: rgb(255 255 255 / 50%) !important;
 }
 .part.about_us {
   background: #555 url("/files/design/about.jpg") top right no-repeat;
@@ -615,7 +637,7 @@ svg.fa-facebook {
   background: #555 url("/files/design/contact.jpg") 42% center no-repeat;
   color: white;
 }
-.part.hamburgers_and_pasta {
+.part.hamburgers_and_burrito {
   background: #555 url("/files/design/burger.jpg") right 60% no-repeat;
   color: white;
 }
@@ -654,7 +676,7 @@ svg.fa-facebook {
   .part.contact {
     background-image: url("/files/full/design/contact.jpg");
   }
-  .part.hamburgers_and_pasta {
+  .part.hamburgers_and_burrito {
     background-image: url("/files/full/design/burger.jpg");
   }
   .part.frying_pan_wok {
@@ -693,6 +715,9 @@ svg.fa-facebook {
 }
 #content .menu .button-list {
   margin-top: 0;
+}
+#content .menu .button-list:first-child {
+  margin-bottom: 0;
 }
 .daily_offer,
 .special {
@@ -759,6 +784,9 @@ svg.fa-facebook {
 .content-card p.description:after {
   display: none;
 }
+.daily_offer h3 {
+  max-width: 12em;
+}
 /*********************************/
 @media all and (min-width: 62em) {
   #content .content-group > div {
@@ -805,12 +833,12 @@ svg.fa-facebook {
 /*********************************/
 #content .part.kids_menu,
 #content .part.grill_griddle,
-#content .part.hamburgers_and_pasta {
+#content .part.hamburgers_and_burrito {
   padding: 10em 0;
 }
 #content .part.kids_menu .list div,
 #content .part.grill_griddle .list div,
-#content .part.hamburgers_and_pasta .list div {
+#content .part.hamburgers_and_burrito .list div {
   display: block;
 }
 #content .part.kids_menu h2 + p {
@@ -819,7 +847,7 @@ svg.fa-facebook {
 #content .part.grill_griddle h2 + p {
   max-width: 20em;
 }
-#content .part.hamburgers_and_pasta h2 + p {
+#content .part.hamburgers_and_burrito h2 + p {
   max-width: 20em;
 }
 @media all and (min-width: 62em) {
@@ -827,7 +855,7 @@ svg.fa-facebook {
     max-width: 30em;
   }
   #content .part.kids_menu > div,
-  .part.hamburgers_and_pasta > div {
+  .part.hamburgers_and_burrito > div {
     max-width: 43rem !important;
     margin-right: 5vw !important;
   }
@@ -924,11 +952,12 @@ svg.fa-facebook {
   }
 }
 /*********************************/
-.part.regular_menu .list-wrapper--single,
-.part.beverages .list-wrapper--single,
-.part.wine_list .list-wrapper--single,
+body:not(.agregator) .part.regular_menu .list-wrapper--single,
+body:not(.agregator) .part.beverages .list-wrapper--single,
+body:not(.agregator) .part.wine_list .list-wrapper--single,
 #reference,
-#references {
+#references,
+.agregator .description + .list-wrapper--single {
   display: none;
 }
 .part.references {
@@ -1161,7 +1190,11 @@ p.desc {
 }
 .part.contact_form {
   position: relative;
-  color: white;
+  color: aliceblue;
+}
+.part.contact_form form input,
+.part.contact_form form textarea {
+  color: black;
 }
 .part.contact_form:after {
   content: "";
@@ -1336,12 +1369,17 @@ dl.klima dt:first-child .imgwrap {
   display: inline-flex;
   align-items: center;
   text-transform: none;
-  padding: 0.5em 0;
+  margin: 0.5em 0;
+  padding: 0;
+  position: relative;
+  margin-left: 2em;
 }
 #footer ul.social li a svg {
   margin-right: 0.25em;
   width: 1.2em;
   color: white;
+  position: absolute;
+  left: -1.75em;
 }
 #footer ul:last-child li:not(.print) {
   width: 100%;
@@ -1585,13 +1623,13 @@ body #footer > * {
   position: relative;
   top: 0.15em;
 }
-.part.hamburgers_and_pasta .meal .tag,
+.part.hamburgers_and_burrito .meal .tag,
 .part.grill_griddle .meal .tag,
 .part.kids_menu .meal .tag {
   background: #424242;
   color: white;
 }
-#content .part.hamburgers_and_pasta .meal .tag svg,
+#content .part.hamburgers_and_burrito .meal .tag svg,
 #content .part.grill_griddle .meal .tag svg,
 #content .part.kids_menu .meal .tag svg {
   color: white !important;
@@ -1672,6 +1710,57 @@ body .definition__close:hover {
   padding-bottom: 1em;
 }
 /*********************************/
+body[data-link="/napojovy_listek"] .section,
+body[data-link="/vinny_listek"] .section,
+body[data-link="/stala_nabidka"] .section {
+  position: relative;
+  padding-bottom: 1em;
+}
+/*
+body[data-link="/napojovy_listek"] .section:not(.hideAfter):after,
+body[data-link="/vinny_listek"] .section:not(.hideAfter):after,
+body[data-link="/stala_nabidka"] .section:not(.hideAfter):after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: rgb(0 0 0 / 78%);
+}
+body[data-link="/napojovy_listek"] .section .overlay,
+body[data-link="/vinny_listek"] .section .overlay,
+body[data-link="/stala_nabidka"] .section .overlay {
+  position: absolute;
+  top: 2em;
+  left: 0;
+  right: 0;
+  z-index: 101;
+  width: 100% !important;
+  height: 100% !important;
+  color: white;
+  text-align: center;
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+}
+body[data-link="/napojovy_listek"] .section .overlay > div,
+body[data-link="/vinny_listek"] .section .overlay > div,
+body[data-link="/stala_nabidka"] .section .overlay > div {
+  position: sticky;
+  top: 2em;
+}
+body[data-link="/napojovy_listek"] .section .overlay p,
+body[data-link="/vinny_listek"] .section .overlay p,
+body[data-link="/stala_nabidka"] .section .overlay p {
+  font-size: 1.5em;
+}
+.overlay__close a {
+  color: white !important;
+  cursor: pointer;
+  border-bottom: thin solid rgba(255,255,255,0.5) !important;
+}
+*********************************/
 .globalmenu__item--current {
   position: relative;
 }
@@ -1680,8 +1769,8 @@ body .definition__close:hover {
   content: "•";
   position: absolute;
   left: 0.75rem;
-  font-size: 1.8rem;
-  top: 0.35rem;
+  font-size: 1.5rem;
+  top: 0.6rem;
 }
 #footer .globalmenu a {
   border-bottom: none;
@@ -1696,7 +1785,7 @@ body .definition__close:hover {
 }
 #footer .globalmenu__item--current:before {
   visibility: visible;
-  top: -0.05em;
-  left: 0em
+  top: 0.1em;
+  left: -0.2em;
 }
 /*********************************/
